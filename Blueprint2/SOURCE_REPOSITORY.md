@@ -7,14 +7,11 @@ d6e9af450d1ae4a3ba8349cc9f251e3cf6edccb3
 Copied source directory:
 Blueprint2/
 
-Additional ready-reference draft copied from repository root:
-fairness_analysis.tex
-fairness_references.bib
-fairness_analysis.pdf
-
-The Blueprint2/main.tex file remains the structured writing scaffold. The
-fairness_analysis files are the repository's prose reference draft and are not
-the same document.
+Blueprint2/main.tex is the independently composed IEEE conference-format
+reference draft requested for the Option C fairness analysis.
+Blueprint2/refs.bib contains its expanded fairness, bandit, and quantum
+resource-allocation bibliography. The root-level fairness_analysis.tex remains
+the user's paper and is intentionally not duplicated inside Blueprint2.
 
 Local compatibility adjustment:
 Blueprint2/main.tex resolves the bibliography from either the repository root

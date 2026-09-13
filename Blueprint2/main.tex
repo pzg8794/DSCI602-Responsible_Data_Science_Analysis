@@ -1,186 +1,179 @@
-% =============================================================================
-% REFERENCE DRAFT / WRITING BLUEPRINT ONLY
-% Not for LMS submission. DSCI 602 prohibits generative AI for writing
-% assignments. Use this file as a pointer map: how verified capstone
-% findings connect to Option C (Fairness). Rewrite in your own prose.
-% =============================================================================
-% Format basis: last DSCI601 ethics/fairness report
-%   (article class, microtype, hidelinks, no indent, tight parskip)
-% Assignment overlay: 11pt, 1-inch margins, named sections, bibtex.
-% Optional +5: swap documentclass for acmart/sigconf or IEEEtran.
-% Compile: pdflatex -> bibtex -> pdflatex -> pdflatex
-% =============================================================================
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{times}
+% Reference draft only: rewrite this paper in the student's own voice.
+% This is a separate DSCI602 Option C reference draft, not the root paper.
+\documentclass[10pt,conference]{IEEEtran}
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{cite}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
-\usepackage[numbers,sort&compress]{natbib}
-\usepackage{setspace}
-\singlespacing
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.45em}
-\pagestyle{plain}
+
+\title{Fairness-Aware Service Allocation in Adaptive Quantum Networks:\\
+Risks, Metrics, and Auditable Mediation}
+
+\author{\IEEEauthorblockN{Piter Garcia}
+\IEEEauthorblockA{DSCI 602: Applied Data Science II\\
+Focus Area: Fairness\\
+Capstone: Fairness-Aware Adaptive Routing for Quantum Networks}}
 
 \begin{document}
+\maketitle
 
-\noindent
-{\large\textbf{Service-Class Disparity in Fairness-Aware Quantum Routing}}\\[0.35em]
-{\small
-Piter Garcia \quad $|\quad$
-DSCI.602.01 Applied Data Science II \quad $|\quad$
-Focus: Option C --- Fairness}\\[0.15em]
-{\small
-Capstone: \emph{Fairness-Aware Adaptive Routing for Quantum Networks}
-\quad (advisors: Daniel Krutz and Travis Desell)}\\[0.15em]
-{\small
-Subtitle: A NeurIPS-style broader-impacts / ACL-style limitations analysis of
-who receives reliable entanglement-routing service under scarce qubits and
-escalating threats.}
+\begin{abstract}
+This reference analysis examines fairness in a quantum-network controller that
+selects entanglement routes and allocates scarce qubits under changing threat
+conditions. The central concern is allocative: an efficiency-oriented bandit
+policy may deliver reliable service to some flow classes while concentrating
+delay, retries, or starvation on others. The proposed response is not a claim
+that one fairness statistic solves the problem. It is a measurement-first
+workflow that defines service classes before evaluation, records demand and
+resource access, compares an unmediated policy with an auditable mediator, and
+reports the resulting utility--disparity frontier with explicit residual risk.
+\end{abstract}
 
-\section*{Context}
-The capstone artifact is not a generic classifier. It is a
-threat-aware quantum-network controller that selects routes and allocates
-limited qubits while link quality, replay capacity, allocator behavior, and
-adversarial regimes change~\cite{suresh2021,mehrabi2021}. Inherited
-graduate-assistant (GA) routing work already evaluates aggregate efficiency,
-regret, robustness, and stability. DSCI~602 adds a distinct question: whether
-those aggregates hide unequal service across competing flows or service
-classes.
+\section{System Context and Responsibility Boundary}
+The artifact under analysis is a threat-aware quantum-network controller, not a
+generic classifier. At each decision round, the controller observes a network
+state, selects an entanglement route, and allocates limited qubit-generation
+capacity. Link quality, memory constraints, replay capacity, allocator choice,
+and adversarial conditions can change the quality of the available actions.
+Prior routing work supplies the inherited bandit and threat-regime evaluation
+spine; the DSCI 602 contribution is a planned fairness-aware mediation layer
+for quantum service equity. Routing and resource allocation therefore remain
+the primary technical problem, while clinical applications are future context
+only.
 
-This is a fairness problem because the system influences a scarce-resource
-decision---who gets a successful, timely, and qubit-proportionate path when
-capacity and context are constrained. The stakeholders are the flows (or
-planned service classes) competing for entanglement routing, plus any
-downstream users of those paths. The relevant data are not demographic
-records. They are run traces: group/service-class identifiers, demand,
-selected action/route, allocated qubits, fidelity, retries or starvation,
-latency, success, and context quality. DSCI~601 already implemented a
-post-run fairness sidecar (\texttt{RunSpec}, \texttt{OutcomeRecord},
-\texttt{QuantumFairnessAdapter}, EQUITAS audit/mitigation fields) and a
-\texttt{QuantumEquitasMediator} class seam with a standalone test. Live
-attachment to the quantum runner is not complete; quantum-specific equity
-experiments remain planned. The analysis below is therefore prospective and
-must not be read as a completed fairness result.
+The system influences who receives successful and timely quantum service under
+scarcity. Relevant stakeholders are applications or tenants competing for
+flows, network operators responsible for allocation policy, and downstream
+users who depend on the resulting entanglement paths. The initial equity units
+should be operational service classes defined before inspecting outcomes, such
+as demand tiers, latency requirements, or context-quality cohorts. These are
+not assumed to be demographic groups; if a future deployment maps them to
+people or institutions, protected-attribute analysis and stakeholder review
+would be required.
 
-Why the dimension is at stake is already visible in inherited, configuration-
-specific routing evidence. For ThompsonSampling with Tb replay under the
-OnlineAdaptive threat, Oracle-normalized efficiency falls from 89.2\% at
-$1\times$ replay to 84.9\% at $1.5\times$, then recovers to 90.8\% at
-$2\times$. That non-monotonic interaction is an aggregate finding. The
-fairness risk is that the loss at $1.5\times$, or the recovery at $2\times$,
-is not distributed evenly: some classes may absorb retries, starvation, or
-latency while others retain reliable service~\cite{obermeyer2019,buolamwini2018}.
+This boundary matters because a network-wide efficiency score can conceal
+service differences. Inherited configuration-specific evidence includes a
+Thompson-sampling replay slice whose Oracle-normalized efficiency changes from
+89.2\% to 84.9\% and then 90.8\% as replay capacity increases under an
+online-adaptive threat. That sequence is not a DSCI 602 fairness result. It is
+an example of why aggregate behavior deserves disaggregation: a gain or loss
+may be distributed unevenly across flow classes. Quantum-network routing and
+fair-sharing research likewise treats scarce capacity and simultaneous
+requests as allocation questions rather than merely throughput questions
+\cite{li2021,cicconetti2023}.
 
-\section*{Risk Analysis}
-Suresh and Guttag's life-cycle model is the right vocabulary for this
-pipeline~\cite{suresh2021}. Bias can enter before any fairness score is
-applied.
+\section{Where Fairness Risk Enters}
+Suresh and Guttag's life-cycle framework provides a useful map for this
+pipeline \cite{suresh2021}. Representation harm can occur when evaluation
+omits difficult topologies, low-context flows, or relevant service classes.
+Measurement harm occurs when traces record success and reward but omit demand,
+allocated qubits, route choice, fidelity, retries, starvation age, or context
+quality. Aggregation harm occurs when one reward treats incompatible service
+needs as interchangeable. Evaluation harm occurs when aggregate efficiency is
+reported without class-level outcomes. Deployment harm occurs when a policy
+tuned at one threat regime is transferred to another operating point.
 
-\paragraph{Representation and grouping.}
-If service classes are undefined, or if demand is unnormalized, the system
-cannot distinguish unequal access from unequal need. The current post-run
-record supports group, success, latency, and reward. It does not yet carry
-demand, allocated qubits, selected route, fidelity, retries/starvation, or
-context quality. Measuring only success on incomplete denominators is a
-classic measurement harm: the audit can look fair while starvation is
-invisible~\cite{mehrabi2021,barocas2023}.
+Sequential learning adds a feedback-loop risk. A bandit observes evidence only
+for selected actions. If a route or class receives fewer opportunities, it can
+produce less reward evidence, which can reduce its future selection probability.
+Fairness constraints therefore have a learning and regret cost, rather than
+being a free post-processing step \cite{joseph2016}. Fair contextual bandit
+work similarly motivates minimum service rates and explicit treatment of
+context when outcomes differ across users \cite{chen2020}. In this system,
+poor context can become an allocation disadvantage even when no protected
+attribute is used.
 
-\paragraph{Historical and aggregation bias.}
-Bandit policies trained on aggregate reward will prefer historically
-successful routes. Under escalating threats, that preference can lock in a
-winner-take-routes pattern: high-context or high-degree flows keep being
-served because they previously succeeded, while low-context flows become
-retry sinks. Obermeyer et al.\ showed how an ostensibly race-neutral
-objective (cost) produced racial disparity because the proxy was
-unequal~\cite{obermeyer2019}. The analogous proxy here is aggregate
-Oracle-normalized efficiency. Optimizing it can ratify unequal service.
+The plausible harms are concrete. High-demand or high-degree flows may receive
+most successful allocations while low-demand flows absorb waiting and retries.
+Flows with weak context may be treated as unreliable and consequently receive
+less exploration. Long or low-fidelity routes may be repeatedly deprioritized,
+creating starvation that disappears inside a network-wide mean. These are
+allocative harms: access to a scarce capability is withheld or degraded. They
+also create accountability harms if operators cannot reconstruct why a flow
+received inferior service. The general fairness literature shows why aggregate
+performance is insufficient: class-level failures can be hidden by overall
+accuracy or a seemingly neutral proxy \cite{buolamwini2018,obermeyer2019}.
 
-\paragraph{Learning and evaluation bias.}
-Context quality is itself a fairness variable. RQ2 of the capstone asks how
-disparities change as disruptions become structured (Markov) or
-online-adaptive, especially when context quality differs. If one class
-systematically receives poorer context, a contextual bandit can appear
-robust in the mean while concentrating failures on that class. Gender Shades
-documented error-rate gaps that aggregate accuracy concealed~\cite{buolamwini2018}.
-The same concealment is plausible when only network-wide efficiency is
-reported.
+\section{Fairness Objective and Measurement}
+Classical definitions are useful warnings but cannot be copied mechanically
+into a resource-allocation system. Demographic parity would compare success or
+access rates across classes, while equalized odds and equality of opportunity
+compare error behavior conditional on an outcome \cite{hardt2016}. Calibration
+and parity can conflict under unequal base rates, and impossibility results
+show that several desirable criteria cannot generally hold simultaneously
+\cite{chouldechova2017,kleinberg2017}. The responsible objective is therefore
+to report a frontier rather than declare one scalar to be ``fair.''
 
-\paragraph{Choice of fairness definition.}
-Demographic parity (equal success rates), equalized odds (equal error
-structure), and calibration (scores mean the same thing across classes) are
-not simultaneously satisfiable in general~\cite{hardt2016,chouldechova2017,kleinberg2017}.
-For quantum routing, equalized access to successful paths under comparable
-demand is closer to the operational goal than calibration of a clinical
-risk score. Forcing a single definition as a hard constraint can destroy
-utility; ignoring definitional conflict is ``fairness through unawareness''
-with extra steps~\cite{barocas2023,hardt2016}. The scientifically honest
-object is therefore a utility--disparity frontier, not a claim that one
-$\lambda$ makes the controller fair.
+One candidate primary measure is demand-normalized access. For class $g$ over
+a run horizon $T$, let $Q_{g,t}$ be allocated quantum capacity and $D_{g,t}$
+be declared demand:
+\begin{equation}
+ A_g(T)=\frac{\sum_{t=1}^{T}Q_{g,t}}
+ {\sum_{t=1}^{T}D_{g,t}}, \qquad
+ \Delta_A(T)=\max_{g,h}|A_g(T)-A_h(T)|.
+\end{equation}
+The audit should also report success-rate and latency gaps, worst-class
+outcomes, retry and starvation frequency, fidelity failures, and a bounded
+resource-allocation index such as Jain's index \cite{jain1984}. Zero-demand
+classes require a declared exclusion rule, and every class definition,
+denominator, physical-infeasibility condition, and missing-context rule should
+be versioned with the experiment. The point is not to hide complexity inside a
+single index; it is to make the trade-offs inspectable.
 
-\section*{Mitigations}
-The mitigations below are already the DSCI~602 deliverable spine. They are
-design changes, not slogans.
+\section{Mediation and Evaluation Protocol}
+The first mitigation is measurement. An enriched decision trace should record
+the class definition, demand, context-quality indicators, candidate routes,
+policy scores, selected route, allocated qubits, fidelity estimate, success,
+latency, retries, and starvation age. Constructed unit tests should include
+equal service, unequal service, zero demand, missing context, and physically
+infeasible routes. This is a prerequisite for any claim about disparity.
 
-\paragraph{Specify groups and denominators before mediation (D1).}
-Define operational service classes and demand normalization; add schema
-fields for allocated qubits, selected route, fidelity, retries/starvation,
-and context quality; test equal-service, unequal-service, zero-demand, and
-missing-context fixtures. This follows the measurement discipline in the
-fairness literature: name the group, name the outcome, name the
-denominator~\cite{suresh2021,mehrabi2021,barocas2023}.
+The second mitigation is an in-processing mediator attached at a documented
+policy-score or allocator boundary. A candidate score can be written as
+\begin{equation}
+ S_t^{\mathrm{fair}}(a)=U_t(a)-\lambda[\widehat{\Delta}_t(a)-\epsilon]_+
+ -\gamma C_t(a),
+\end{equation}
+where $U_t$ is base utility, $\widehat{\Delta}_t$ is estimated disparity,
+$\epsilon$ is tolerated slack, and $C_t$ penalizes missing or unreliable
+context. The identity setting $\lambda=\gamma=0$ is an explicit off-switch,
+not an afterthought. The mediator should remain separable and auditable so
+that the inherited routing policy can be compared with its fairness-aware
+counterpart \cite{chen2020}.
 
-\paragraph{Attach a live mediator with an off-switch (D2).}
-The existing \texttt{QuantumEquitasMediator} seam should be attached at a
-documented policy-score or allocator boundary, implementing
-\[
-S^{\mathrm{fair}}_t(a)=U_t(a)-\lambda\max(0,\widehat{\Delta}_t(a)-\varepsilon)-\gamma C_t(a),
-\]
-where $U_t$ is utility, $\widehat{\Delta}_t$ is an estimated disparity,
-$\varepsilon$ is a tolerated slack, $C_t$ is a context-quality penalty, and
-$\lambda=\gamma=0$ is the identity (no-mediation) baseline. Unit tests must
-show identity, threshold, monotonicity, and determinism. This is in-processing
-mitigation in Mehrabi et al.'s taxonomy, not post-hoc reporting~\cite{mehrabi2021,hardt2016}.
+Validation must compare the unmediated baseline with a prespecified sweep of
+$\lambda$, $\gamma$, and $\epsilon$ across matched policies, allocators,
+capacities, topologies, threat regimes, and random seeds. Report aggregate
+utility, regret, success, and fidelity beside $\Delta_A$, latency gaps,
+worst-class outcomes, Jain's index, and starvation frequency. Repeated trials
+and uncertainty intervals are necessary because small classes can produce
+unstable estimates. The result should be a utility--disparity frontier, not a
+single favorable operating point selected after inspection. If a class has too
+few observations for a stable estimate, the system should report uncertainty
+and apply a conservative service floor rather than infer that no disparity
+exists.
 
-\paragraph{Evaluate jointly, not sequentially (D3--D4).}
-Screen a small matrix, lock a manifest, then estimate main effects and
-interactions of mediation $\times$ threat $\times$ policy $\times$ allocator
-$\times$ capacity. Report paired differences against the unmediated baseline
-with seed-level uncertainty. When aggregate efficiency and class-level
-starvation disagree, inspect mechanisms rather than averaging them away.
-That is the lesson of both Gender Shades and the Obermeyer cost-proxy
-failure~\cite{buolamwini2018,obermeyer2019,kleinberg2017}.
+\section{Limitations and Residual Risk}
+This analysis is prospective. It does not claim completed live mediation or
+completed DSCI 602 fairness experiments. The simulator does not establish
+hardware-grounded timing, contention, or noise behavior. Service classes are
+design choices and may encode the wrong units of concern; demand itself may be
+strategically inflated. A mediator can reduce utility, increase latency for
+other classes, or favor an imperfect proxy for equity. Conversely, removing
+mediation can preserve aggregate utility while hiding persistent exclusion.
 
-\paragraph{Document residual risk.}
-Even a well-tuned mediator cannot satisfy every formal criterion at
-once~\cite{kleinberg2017,chouldechova2017}. Context-quality gaps may remain
-if the environment does not emit them. The seam may attach in the wrong
-place (policy vs.\ allocator). Live monitoring is currently unsupported; only
-post-run audit exists. These are residual risks, not future-work decoration.
+The remaining governance questions are material: who approves classes and
+denominators, who reviews alerts, who can change fairness weights, and what
+rollback path exists? Security and privacy intersections, including poisoning
+of threat feedback and exposure of flow telemetry, require separate analysis.
+The responsible claim is narrow: adaptive quantum routing can create
+service inequity while appearing efficient, so the project should measure
+flow-conditioned outcomes, evaluate an auditable mediator, and disclose the
+frontier and its residual uncertainty.
 
-\section*{Limitations}
-This analysis does not claim completed fairness-mediated quantum runs, a live
-attached mediator, advisor approval of service classes, or clinical
-deployment. Clinical fairness remains a secondary/future validation path.
-GA routing results are inherited infrastructure, not DSCI~602 equity
-findings. The 89.2/84.9/90.8 series is one validated
-ThompsonSampling+Tb/OnlineAdaptive slice, not a universal law of replay
-capacity. Group definitions are still an advisor checkpoint. Until D1
-freezes classes and denominators, any disparity number would be
-under-specified.
-
-Treated as a venue-style broader-impacts / limitations note, the responsible
-claim is narrow: quantum-network controllers can produce service inequity
-even when they look efficient; the appropriate response is to measure
-flow-conditioned outcomes, mediate with an auditable off-switch, and report
-the utility--disparity frontier rather than a single fairness
-score~\cite{barocas2023,hardt2016,suresh2021}.
-
-\bibliographystyle{plainnat}
-% The repository-level main.tex is the Overleaf entrypoint, so bibliography
-% paths are resolved from the repository root.
-\bibliography{Blueprint2/refs}
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
 
 \end{document}
