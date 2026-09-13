@@ -1,322 +1,166 @@
-
-Independently review the existing DSCI602 Planning Presentation. A complete baseline already exists and must be preserved: https://github.com/pzg8794/DSCI602/tree/f9cc56f/Planning_Presentation . Use the canonical strategy at https://github.com/pzg8794/Fall-2026-Semester-Master-Plan/blob/1ba61dc1cedd6e2650e267ffaa51e1be355be139/AI-PROJECT-SPACES-SOURCE-MAP-2026-09-06.md and https://github.com/pzg8794/DSCI601/blob/main/NEXT_PHASE_INTEGRATION.md. Quantum routing and resource allocation are primary. The distinct DSCI602 contribution is fairness-aware mediation and quantum service equity. Clinical work is secondary/future. Do not recreate the deck or claim edits. Review it against the 12.5-15 minute assignment: title/advisors; overview; research questions; 3-5 progress slides; 1-2 semester investigation slides; 4-8 deliverable slides tied to research questions and milestones; updated domain and architecture diagrams; and 1-2 Gantt slides. Milestones: Sep 28 Standup I, Oct 19 Major Demo I, Nov 2 Standup II, Nov 16 Major Demo II, Nov 23 rough draft, Nov 30 Standup III, Dec 9 final slides, Dec 15 final report/code. Return only KEEP, MODIFY, and REJECT recommendations with exact slide numbers, evidence, and the three biggest grading risks. Do not invent results, implementation status, advisor agreements, datasets, technologies, venues, or dates.
-
-KEEP
-Slides 1–3 — Keep the opening sequence if it already presents the project title/advisors, a thesis-level overview, and the problem framing before technical detail. This matches the assignment’s required opening components and preserves the baseline deck rather than restructuring it. The baseline repository explicitly includes a versioned PPTX/PDF, a README, and a source-and-decision log, which supports treating this as an established artifact rather than a draft to recreate.
-
-Slides that position quantum-network routing and resource allocation as the core domain — Keep. The canonical strategy requires DSCI602 to remain centered on quantum-network routing and resource allocation; fairness-aware mediation and quantum service equity must be the distinct extension, not a replacement for the networking problem. The DSCI601 integration plan is the appropriate continuity source for retaining the prior routing/resource-allocation backbone.
-
-Slides that distinguish prior DSCI601 work from DSCI602 work — Keep. The planning deck should preserve a clear boundary: reuse the GA paper’s threat-aware bandit evaluation spine as inherited context, while reserving DSCI602’s original contribution for fairness-aware mediation and service equity. This separation avoids presenting prior GA work as a new DSCI602 result.
-
-Slides that frame clinical applications as secondary or future-facing — Keep. The project strategy explicitly places clinical work outside the primary DSCI602 scope unless new advisor evidence changes it. It can remain as a constrained future-application statement, but should not occupy core research-question, architecture, milestone, or deliverable space.
-
-Slides containing source provenance, assumptions, and decision boundaries — Keep. The baseline’s dedicated SOURCE_AND_DECISION_LOG.md indicates that the deck is intended to maintain traceability between claims and sources. Retaining claim-level provenance is especially important where the deck describes scope, inherited work, proposed methods, or anticipated evaluation rather than completed implementation.
-
-MODIFY
-Slide 1 — Modify only if the title/subtitle does not explicitly signal both the primary domain and the DSCI602 distinction. The title should make quantum-network routing/resource allocation primary, with fairness-aware mediation or quantum service equity as the DSCI602 extension. Avoid a title that foregrounds clinical work, broad “AI fairness,” or a generic quantum-computing label without routing/allocation.
-
-Slides 2–4 — Modify the overview/problem framing to use a strict three-layer scope statement:
-
-Primary system problem: routing and allocation of quantum-network resources.
-
-DSCI602 contribution: fairness-aware mediation and quantum service equity.
-
-Secondary/future context: clinical or other application domains.
-
-Evidence: the canonical project strategy explicitly sets this hierarchy. The deck should not imply that fairness is merely an ethics sidebar or that clinical work is an active semester deliverable.
-
-Slides containing research questions — Modify so each question is operationally tied to a later deliverable and evaluation evidence. The presentation should visibly answer:
-
-What routing/resource-allocation decision is being mediated?
-
-What fairness-aware mediation or service-equity property is being investigated?
-
-How will equity be evaluated jointly with efficiency, regret, robustness, stability, allocation, replay capacity, topology, and threat progression?
-
-This is necessary because the master strategy calls for a joint—not fairness-only—evaluation. Do not add unsupported datasets, benchmarks, implementation claims, or advisor-approved metric choices.
-
-Slides 5–9 or the existing progress block — Modify to make the 3–5 required progress slides unmistakable. Label them as completed baseline/progress evidence versus planned DSCI602 work. Use only evidence documented by the existing repository and decision materials. The key repair is status discipline: distinguish “existing,” “adapted/reused,” “planned,” and “to be evaluated.” The baseline repository confirms the presentation and supporting documentation exist, but that fact alone does not establish experimental, software, dataset, or evaluation completion.
-
-Slides covering semester investigation — Modify to ensure there are exactly 1–2 clearly identified investigation slides. These slides should define the semester’s investigation as fairness-aware mediation within quantum routing/resource allocation, including what will be compared or stress-tested conceptually. They should not claim settled hypotheses, completed empirical results, particular simulation platforms, datasets, or confirmed advisor agreement unless the deck’s cited sources independently document them.
-
-Slides covering deliverables — Modify so there are 4–8 deliverable slides and each one maps visibly to one or more research questions and dated milestones. Use a repeated structure such as: “Deliverable → research question(s) → observable artifact/evidence → milestone.” Required milestone dates are:
-
-Sep 28 — Standup I
-
-Oct 19 — Major Demo I
-
-Nov 2 — Standup II
-
-Nov 16 — Major Demo II
-
-Nov 23 — Rough draft
-
-Nov 30 — Standup III
-
-Dec 9 — Final slides
-
-Dec 15 — Final report/code
-
-Treat these as schedule commitments, not evidence of present completion. The presentation should not introduce additional dates unless they appear in current course/advisor evidence.
-
-Updated domain diagram slide(s) — Modify to show the correct conceptual hierarchy. The domain diagram should place quantum-network users/services, routing/resource allocation, threat-aware evaluation context, and fairness-aware mediation/service equity in one coherent system. It should visually distinguish:
-
-inherited DSCI601/GA evaluation context;
-
-the DSCI602 fairness-aware mediation layer;
-
-metrics or outcomes to be jointly evaluated.
-
-Do not depict unavailable components—such as a deployed network, clinical data pipeline, completed simulator integration, or validated fairness engine—as implemented.
-
-Updated architecture diagram slide(s) — Modify to distinguish architecture from claims of implementation. Use neutral labels such as “proposed mediation layer,” “planned evaluation loop,” or “conceptual experiment/replay configuration” where implementation is not evidenced. The architecture should retain routing/allocation at the decision core and portray fairness as a mediation constraint/objective or policy layer, not an unrelated downstream report. This aligns with the specified contribution while preserving the DSCI601 spine.
-
-Gantt slide(s) — Modify to include 1–2 readable Gantt slides with all eight fixed milestones and dependency logic. A strong sequence is:
-
-baseline/progress synthesis before Standup I;
-
-initial mediation/equity design and demo evidence before Major Demo I;
-
-refinement and comparative evaluation preparation between the first and second demos;
-
-report assembly before the Nov 23 rough draft;
-
-final synthesis, slides, report, and code through Dec 15.
-
-Do not portray all deliverables as complete before their associated milestone, and do not assign unsupported granular tasks or technology commitments. The only externally established dates in the request are the eight listed milestones.
-
-Any slide that presents literature, domain claims, or methodological justification without source attribution — Modify. The baseline has a source-and-decision log, so the deck should maintain a concise on-slide citation or traceable source marker for substantive claims. Source mapping is particularly important for scope decisions, inherited DSCI601 components, and the distinction between a known baseline and a planned extension.
-
-REJECT
-Reject any slide or wording that rebrands the thesis as primarily clinical, biomedical, or health-service work. Clinical applications may remain future/secondary context only; they must not displace quantum routing/resource allocation or become a claimed semester deliverable without current advisor evidence.
-
-Reject any claim that fairness-aware mediation, quantum service equity, a prototype, a dataset, a simulator, empirical results, validated metrics, or advisor endorsement already exists unless the baseline deck’s cited evidence proves it. The existence of deck files and decision documents establishes a planning baseline, not the completion of experiments or implementation.
-
-Reject any deliverable slide that is not explicitly connected to a research question and a milestone. A list of activities, tools, readings, or broad aspirations does not satisfy the assignment’s requirement for 4–8 deliverable slides tied to research questions and milestones.
-
-Reject any diagram that treats the GA paper’s threat-aware bandit work as a duplicate DSCI602 contribution. It should be represented only as an inherited evaluation spine or contextual baseline. The new contribution must remain fairness-aware mediation and quantum service equity evaluated jointly with the specified system-performance dimensions.
-
-Reject schedule content that adds unverified deadlines, events, venues, datasets, implementations, or advisor decisions. Retain only the supplied milestone dates unless the presentation’s own documented course/advisor evidence supports additional commitments.
-
-Biggest grading risks
-Requirement-traceability failure. The highest risk is that research questions, 4–8 deliverables, progress evidence, investigation slides, diagrams, and Gantt milestones appear as separate parts rather than a traceable chain. Graders should be able to identify, slide by slide, how each deliverable answers a research question and when evidence will be shown.
-
-Scope drift or contribution confusion. The deck risks losing its distinct thesis identity if it either over-centers clinical work or simply repeats the GA paper’s threat-aware bandit evaluation. The presentation must state that routing/resource allocation is primary and that fairness-aware mediation plus quantum service equity is the DSCI602 extension.
-
-Unsupported-status claims. The deck must avoid presenting proposed mechanisms, data, benchmarks, technology choices, completed results, or advisor agreements as established facts. The baseline repository provides a preserved presentation plus documentation, but it does not itself verify implementation or experimental completion.
-
-Independently review the existing DSCI602 Planning Presentation. A complete baseline already exists and must be preserved: https://github.com/pzg8794/DSCI602/tree/f9cc56f/Planning_Presentation . Use the canonical strategy at https://github.com/pzg8794/Fall-2026-Semester-Master-Plan/blob/1ba61dc1cedd6e2650e267ffaa51e1be355be139/AI-PROJECT-SPACES-SOURCE-MAP-2026-09-06.md and https://github.com/pzg8794/DSCI601/blob/main/NEXT_PHASE_INTEGRATION.md. Quantum routing and resource allocation are primary. The distinct DSCI602 contribution is fairness-aware mediation and quantum service equity. Clinical work is secondary/future. Do not recreate the deck or claim edits. Review it against the 12.5-15 minute assignment: title/advisors; overview; research questions; 3-5 progress slides; 1-2 semester investigation slides; 4-8 deliverable slides tied to research questions and milestones; updated domain and architecture diagrams; and 1-2 Gantt slides. Milestones: Sep 28 Standup I, Oct 19 Major Demo I, Nov 2 Standup II, Nov 16 Major Demo II, Nov 23 rough draft, Nov 30 Standup III, Dec 9 final slides, Dec 15 final report/code. Return only KEEP, MODIFY, and REJECT recommendations with exact slide numbers, evidence, and the three biggest grading risks. Do not invent results, implementation status, advisor agreements, datasets, technologies, venues, or dates.
-
-Confirmed on both counts — I now have the complete 6-page assignment text (it was readable as an attachment), and your fairness base is real and verifiable across the repos. Fairness is Option C, and the fit is strong.
-
-What the assignment actually requires
-Task: a 2-page-max technical analysis (references excluded) of one responsibility dimension of your capstone — Option C is fairness — situating specific risks in your project, grounding them in peer-reviewed literature, and proposing cited mitigations with residual-risk honesty.
-
-Format: single-spaced 11–12 pt, 1-inch margins, or a conference template (ACM sigconf/IEEE recommended); the prompt explicitly allows reusing existing LaTeX templates from your capstone or prior assignments; bibtex with a consistent style required.
-
-Citations: minimum 6, at least 4 peer-reviewed/archival; every candidate source named in the prompt is already in your archived 37-item set.
-
-Structure: Context, Risk Analysis, Mitigations, Limitations headings; technical-paper voice; header with name, capstone title, focus area, subtitle; PDF via myCourses — and the page warns you must click Submit and see "FILE SUBMISSION SUCCESSFUL".
-
-Rubric (100): capstone specificity 20, technical depth 25, research engagement 20, mitigations 15, writing 10, formatting/citations 10; +5 bonus for a conference template framed as a NeurIPS Broader Impacts / ACL Limitations section.
-
-Your verified base
-The DSCI601 Ethics & Fairness Report: ethics_fairness_report.tex (one-page, Overleaf-ready) with requirements, source lineage from your IDAI700 ethics paper, and a submission check — its core argument is fairness as enforceable structure in the quantum-routing project .
-
-The DSCI601 fairness-bandits project paper (the clean Uppsala writing-sample copy) and the fairness-quantum proposal .
-
-The EQUITAS implementation: EquitasFairnessMediator with audit/mitigation modes, monitored/mitigation groups, group summaries with DI ratios and 80%-rule compliance, utility–fairness frontier figures, 168 passing tests, and the QuantumEquitasMediator seam — real, named fairness objects you can cite for specificity .
-
-The archived Option-C canon: Suresh & Guttag, Mehrabi, Hardt, Chouldechova, Kleinberg, Barocas/Hardt/Narayanan, Gender Shades, Obermeyer — the exact list the assignment suggests .
-
-What transfers vs. what must be rebuilt
-Transfers cleanly: the literature spine, the "structural not cosmetic" motivation, the LaTeX template, and the mitigation vocabulary (auditing, mediation, parity metrics, frontier analysis). Must be rebuilt: the situating. Rubric row 1 (20 pts) punishes anything generic, and the analysis must be traceable to your DSCI602 capstone specifically — so the artifact under analysis is the quantum routing/qubit-allocation pipeline, the "groups" are flows/service classes, the failure mode is disparity concentration under escalating threat regimes and unequal context quality, and the trade-off is the λ/γ/ε utility–disparity frontier — with impossibility results (Kleinberg, Chouldechova, Hardt) motivating why you measure the frontier rather than assert a single definition. Critically, keep the evidence discipline from the presentation: fairness experiments are planned, so write risks and mitigations prospectively and claim no results.
-
-Two cautions: do not resubmit DSCI601 prose — this is a new individual deliverable for a different course, so reuse references, framing, and template, not text; and the course prohibits generative AI for writing assignments, so I'll help with structure, source mapping, and QA, but the prose stays yours .
-
-Want me to build the section-by-section outline mapped to your capstone artifacts and the archived sources — a blueprint you draft from tonight?
-
-GitHub
-GitHub
-
-
-Awesome, let's use that as our base, and check overleaf (easiest to find papers), drive, or github repos to find papers on ethics/fairness that we can use as basis for this paper Computer Browser Google Drive GitHub OpenAI Developers Notion Adobe Linear PDF Life Science Research LaTeX
-
-The idea is to have a ready to submit draft for me to use as a reference and blue print as I write the paper focusing on Fairness; this will allow me to focus on key points obtained from your findings. Let's make it a latex paper using the latest format we used writing the last paper on overleaf.
-
-
-dsci602-fairness-analysis
-Generated File
-
-dsci602-fairness-refs
-Generated File
-Fairness is the right Option C choice, and you already have a real base. Drive is not connected here, so this is from GitHub only: the DSCI601 ethics/fairness report, the EQUITAS implementation, and the archived assignment canon.
-
-I did not write a finished paper you can upload. DSCI 602 forbids generative AI for writing assignments, and this must be your prose. What you have is a compilable ACM scaffold plus a .bib so you can spend tonight filling the AUTHOR WRITE blocks.
-
-What I found
-Last fairness paper (Overleaf-style LaTeX): ethics_fairness_report.tex in IDAI700 / DSCI601-Project_Proposal — article, 10pt, 0.58 in margins, fairness as a design requirement (not a post-hoc metric), context quality, subgroup disparity beside aggregate regret, clinical/privacy/security kept secondary. That layout fails this assignment’s 11–12 pt / 1-inch (or conference template) rule, so I did not clone it.
-
-Implementation you can name for specificity: EquitasFairnessMediator audit vs mitigation, QuantumEquitasMediator seam (not attached), post-run sidecar, planned $\lambda,\gamma,\varepsilon$ score.
-
-Option C sources already on disk: Suresh & Guttag, Mehrabi, Hardt, Chouldechova, Kleinberg, Barocas/Hardt/Narayanan, Gender Shades, Obermeyer, Model Cards, Datasheets.
-
-What to write from (the key points)
-Artifact: threat-aware quantum routing + qubit allocation, not a generic ML classifier and not clinical.
-
-Groups: service classes / flows, not demographic attributes. Use Gender Shades / Obermeyer only as “aggregate metrics hide group error,” not as if you have face or claims data.
-
-Risk: high Oracle-normalized efficiency can coexist with starvation/retries on poorly observed flows, especially under adaptive threat and unequal context.
-
-Definition: do not pick one number. Cite impossibility and defend the utility–disparity frontier.
-
-Mitigation: schema + denominators (D1) → identity/audit baseline → live mediator (D2) → frontier evaluation. No fairness results claimed.
-
-Limitations / Broader impacts: unattached seam, advisor-pending service classes, simulator ≠ hardware — this is the +5 venue framing.
-
-Files
-The ACM sigconf scaffold (header, sections, comments, equation).
-
-The bibliography (dsci602-fairness-refs.bib). Verify Buyl/Leslie against your DSCI601 .bib before citing; the Option C eight are the safe core.
-
-Overleaf: new project, upload both, set the .tex as main, pdfLaTeX. As you replace each AUTHOR WRITE with your sentences, delete the comment bullets so you stay under 2 pages of body. Target 6–8 citations, all from the .bib. Export PDF, put name / capstone title / Option C / subtitle on the first page (already in \title/\subtitle/\author), then myCourses Submit until you see file-submission successful.
-
-If you paste one drafted section here, I can check specificity, citation use, and evidence-state — not rewrite it.
-
- 
-
-% DSCI 602 Responsible Data Science Analysis — Option C (Fairness)
-% BLUEPRINT / WRITING SCAFFOLD — not a finished submission.
-% Course rule: this is an individual writing assignment; generative AI
-% must not produce the submitted prose. Rewrite every AUTHOR WRITE block
-% in your own words. Do not paste DSCI601 report text.
+%===============================================================================
+% DSCI.602.01 — Responsible Data Science Analysis (Individual Assignment)
+% BLUEPRINT SKELETON — NOT SUBMITTABLE AS-IS
 %
-% Format: ACM sigconf (assignment-recommended; +5 bonus if framed as
-% Broader Impacts / Limitations). Meets 11–12pt two-column conference
-% look. Body must stay <= 2 pages excluding references.
+% How to use this file:
+%   1. Upload main.tex + refs.bib to a fresh Overleaf project (acmart is
+%      preinstalled on Overleaf; no extra files needed).
+%   2. Every [WRITE: ...] block tells you what to say, in your own words,
+%      with the target word budget and the citations to make. Replace each
+%      bracket with your own prose. Course policy: the writing must be yours.
+%   3. Compile and check that BODY text (everything before the references)
+%      fits 2 pages. Budget below totals ~1,400–1,600 words; sigconf
+%      two-column holds roughly that on two pages. Trim Risk Analysis first
+%      if you overflow.
+%   4. Before submitting: delete all [WRITE:] scaffolding comments, confirm
+%      the header block shows name / capstone title / focus area / subtitle,
+%      and verify the myCourses "FILE SUBMISSION SUCCESSFUL" screen.
 %
-% Compile on Overleaf: main file this .tex + the companion .bib.
-% Menu: Compiler = pdfLaTeX.
-%
-% Header required by the assignment: name, capstone title, focus, subtitle.
+% Evidence-state rules for THIS paper (from your signed-off capstone deck):
+%   - Fairness experiments and live mediation are PLANNED, not done.
+%     Write risks and mitigations prospectively ("will evaluate", "is
+%     designed to"), never as completed results.
+%   - The EQUITAS/post-run fairness infrastructure EXISTS; the clinical
+%     audit evidence belongs to a prior course project in a different
+%     domain — cite it as prior infrastructure/experience, not as a
+%     quantum-network result.
+%   - GA = graduate-assistant quantum-routing work (inherited baseline).
+%===============================================================================
 
-\documentclass[sigconf,screen,10pt]{acmart}
-\settopmatter{printfolios=false}
-\renewcommand\footnotetextcopyrightpermission[1]{}
-\setcopyright{none}
-\acmConference[DSCI 602]{Responsible Data Science Analysis}{September 2026}{Rochester, NY}
-\acmYear{2026}
-\acmISBN{}
-\acmDOI{}
+\documentclass[sigconf,nonacm,authorversion]{acmart}  % acmart v1.93+, as in your GA venue guide
+\settopmatter{printacmref=false}                     % no ACM reference block for a course paper
+\renewcommand\footnotetextcopyrightpermission[1]{}   % clean first page
+\pagestyle{plain}
 
 \usepackage{booktabs}
-\usepackage{microtype}
+\usepackage{amsmath}
 
-\title{Fairness-Aware Adaptive Routing for Quantum Networks}
-\subtitle{Option C --- Fairness: Service Equity under Threat-Aware Routing and Qubit Allocation}
+\citestyle{acmauthoryear}   % ACM author-year; switch to acmnumeric if you prefer numbered
+
+\begin{document}
+
+\title{Fairness-Aware Adaptive Routing for Quantum Networks}  % capstone title (required)
+\subtitle{Responsible Data Science Analysis --- Focus Area: Fairness\\[2pt]
+  {\normalsize [WRITE: your analysis subtitle here --- one line naming the specific angle, e.g., service-equity risks when entanglement routing is optimized for aggregate efficiency]}}
+
 \author{Piter Garcia}
 \affiliation{%
   \institution{Rochester Institute of Technology}
-  \department{DSCI.602.01 Applied Data Science II}
-}
+  \city{Rochester}
+  \state{NY}
+  \country{USA}}
 \email{pzg8794@rit.edu}
 
-\begin{document}
 \begin{abstract}
-% AUTHOR WRITE (3--4 sentences). Must name the artifact, stakeholders,
-% and that this is a prospective fairness analysis of the DSCI 602
-% capstone, not a completed experiment report.
-\noindent\textit{Replace this abstract.} State that the capstone artifact is a threat-aware quantum routing and qubit-allocation evaluation spine plus a planned live fairness mediator. State who is affected (flows / service classes competing for scarce entanglement and qubits). State that live fairness experiments are not yet run, so the analysis is risk-and-mitigation design, not results.
+% Optional in a 2-page paper; delete if you need the space.
+[WRITE (60--80 words, optional): one sentence on the capstone, one on the
+fairness concern, one on your mitigation stance, one on the venue-norm
+framing (limitations/broader-impact style).]
 \end{abstract}
 
 \maketitle
 
-\section{Context}
-\label{sec:context}
-% Rubric 1 (20 pts): bind every claim to THIS capstone.
-% Do not write ``AI can be biased.''
-%
-% FACTS YOU MAY USE (verified in your repos; rewrite, do not copy):
-% - Capstone primary domain: quantum-network routing and resource allocation.
-% - Distinct DSCI 602 contribution: fairness-aware mediation and quantum service equity.
-% - Inherited GA work supplies efficiency/regret/robustness/stability under threat
-%   and replay capacity; it does not measure service equity.
-% - Existing: RunSpec/FairnessSpec/ProvenanceSpec, OutcomeRecord, post-run
-%   QuantumFairnessAdapter, EquitasFairnessMediator audit/mitigation modes,
-%   QuantumEquitasMediator class seam + standalone test. Not attached to the
-%   quantum runner. Current records: group, success, latency, reward.
-% - Planned: service-class/demand schema, allocated qubits, fidelity, retries/
-%   starvation, context quality; live lambda/gamma/epsilon score.
-% - Clinical work is secondary/future and is NOT the situating artifact.
-% - Guiding question: Across which groups might errors differ, which fairness
-%   definition is appropriate, and what does it cost to satisfy it?
+%===============================================================================
+\section{Context}  % ~250--300 words | Rubric row 1 (specificity, 20 pts)
+%===============================================================================
+[WRITE: Situate the artifact precisely. Cover, in order:
+ (1) The system: a quantum-network controller that selects entanglement
+     routes and allocates limited qubits under stochastic-to-adaptive threat
+     regimes, evaluated by an inherited threat-aware bandit spine (the
+     graduate-assistant quantum-routing work), now extended with
+     fairness-aware mediation (your DSCI602 capstone).
+ (2) The decision the system influences: which flows get successful, timely
+     service when routes, qubits, and reliable context are scarce.
+ (3) The ``groups'': flows / service classes differentiated by demand,
+     priority, and context quality --- these are your equity units.
+ (4) Stakeholders: tenants/applications sharing the network whose service
+     depends on the controller's allocation choices.
+ (5) Why fairness is at stake: the evaluation objective is aggregate
+     Oracle-normalized efficiency, and inherited evidence already shows
+     non-obvious interactions (a validated replay slice where efficiency
+     falls then recovers across capacity scales) --- proof that aggregate
+     metrics can hide regime-dependent behavior.
+ Cite the venue-norm framing once here: NeurIPS checklist / ACL limitations
+ practice \cite{gibney2020,neuripschecklist,aclarr}.]
 
-\textbf{AUTHOR WRITE.} In 4--6 sentences: name the artifact (quantum environment + policy/allocator loop + planned mediator). Name the decision (route selection and qubit allocation under scarce resources, partial context, and escalating threats). Name stakeholders (competing flows or service classes; a controller that currently optimizes aggregate Oracle-normalized efficiency). Explain why fairness is at stake: aggregate efficiency can stay high while some flows absorb more failures, latency, retries, or starvation, especially when context quality is unequal. Cite \cite{suresh2021,mehrabi2021} for pipeline sources of harm. One sentence: this analysis is prospective; no fairness-mediated quantum results are claimed.
+%===============================================================================
+\section{Risk Analysis}  % ~500--600 words | Rubric row 2 (depth, 25 pts)
+%===============================================================================
+% Guiding question from the assignment: across which groups might outcomes
+% differ, which fairness definition fits, and what does it cost to satisfy it?
 
-\section{Risk Analysis}
-\label{sec:risks}
-% Rubric 2 (25 pts): established terminology + capstone-specific failure modes.
+\subsection{Where disparity enters the pipeline}
+[WRITE: Map Suresh \& Guttag's sources-of-harm lifecycle \cite{suresh2021}
+and the Mehrabi survey's bias taxonomy \cite{mehrabi2021} onto YOUR pipeline
+concretely: measurement (which flow outcomes get recorded --- success,
+latency, reward today; demand, allocated qubits, retries/starvation only
+planned), evaluation (aggregate efficiency as the headline metric),
+and deployment (threat regimes that shift the operating point). Name the
+specific stage, not just the category.]
 
-\subsection{Where bias can enter this pipeline}
-\textbf{AUTHOR WRITE.} Map Suresh and Guttag's lifecycle sources \cite{suresh2021} onto your system, e.g.:
-\begin{itemize}
-  \item \emph{Historical / representation:} if ``group'' is only a post-run label, demand and service class never enter the decision, so the learner cannot see who is underserved \cite{mehrabi2021}.
-  \item \emph{Measurement:} success/latency/reward without allocated qubits, retries, or context quality hides access and starvation gaps.
-  \item \emph{Aggregation:} reporting only mean Oracle-normalized efficiency (the inherited capacity-paradox logic) can mask concentrated harm under OnlineAdaptive or other threat regimes.
-  \item \emph{Evaluation:} post-run sidecar without live mediation cannot change who receives the next qubit.
-\end{itemize}
-Keep this to one tight paragraph plus the list, or fold the list into prose.
+\subsection{Which fairness definition fits --- and why none is free}
+[WRITE: Present demographic-parity-style per-class service gaps versus
+error-rate parity in your setting \cite{hardt2016,barocas2023}; then use the
+impossibility results \cite{chouldechova2017,kleinberg2017} to justify your
+capstone's actual design stance: measure a utility--disparity frontier across
+a $\lambda,\gamma,\epsilon$ mediation sweep rather than assert one metric.
+This is your deepest technical move --- the frontier exists precisely because
+the definitions cannot all hold at once.]
 
-\subsection{Which groups, which definition, which impossibility}
-\textbf{AUTHOR WRITE.} Be concrete:
-\begin{itemize}
-  \item Groups are \emph{not} demographic protected classes in this capstone; they are operational service classes / flow groups competing for entanglement paths and qubits. (Do not import Gender Shades or Obermeyer as if your data were faces or healthcare claims. Use them only as documented proof that unexamined aggregate metrics hide group error \cite{buolamwini2018,obermeyer2019}.)
-  \item Candidate definitions: demographic parity of success, equalized odds on success given demand, calibration of predicted route utility, and resource-access or starvation gaps. Cite \cite{hardt2016,barocas2023}.
-  \item Impossibility: you cannot satisfy all of demographic parity, equalized odds, and calibration at once except in degenerate cases \cite{kleinberg2017,chouldechova2017}. That is why the capstone plans a \emph{utility--disparity frontier} rather than a single ``fair'' scalar.
-\end{itemize}
+\subsection{Concrete failure modes and who bears them}
+[WRITE: 2--3 named failure modes, each with the affected group:
+ (a) aggregate gains concentrating in high-demand classes while low-demand
+     or poor-context flows absorb retries/starvation under escalating
+     (structured/adaptive) threats;
+ (b) ``fairness through unawareness'' --- the current post-run records lack
+     the fields needed to even see disparity (cite the caution via
+     \cite{barocas2023});
+ (c) deployment drift --- a policy tuned in one threat regime transferring
+     poorly, echoing how audited real-world systems failed groups the
+     aggregate metric hid \cite{buolamwini2018,obermeyer2019}.
+ Keep the quantum claims prospective; the two cited harms papers are your
+ evidence that aggregate-optimized systems conceal group harm in general.]
 
-\subsection{Plausible failure modes}
-\textbf{AUTHOR WRITE.} Pick 2--3, each with who is harmed:
-\begin{enumerate}
-  \item \textbf{Efficiency-without-equity.} Inherited non-monotonic replay behavior shows that extra capacity can help or hurt depending on policy, allocator, and threat. Without equity outcomes, a ``better'' aggregate point may be paid for by one service class.
-  \item \textbf{Context-quality disparity.} RQ2: structured/adaptive threats plus unequal context can concentrate failures on poorly observed flows.
-  \item \textbf{Fairness-through-unawareness.} Omitting group/service-class from the live decision (current post-run-only path) is the failure mode the literature warns against \cite{barocas2023,mehrabi2021}.
-  \item \textbf{Wrong attachment point.} Mediating only after the fact, or attaching at the wrong seam (policy score vs.\ allocator), can create the appearance of fairness while allocation remains greedy.
-\end{enumerate}
+%===============================================================================
+\section{Mitigations}  % ~350--450 words | Rubric row 4 (15 pts)
+%===============================================================================
+[WRITE: Present mitigations as measurement-first, then intervention, then
+process --- each tied to your actual architecture:
+ (1) Measurement: per-class success/latency/resource-access/retry/starvation
+     gaps computed from enriched outcome records (your D1 schema work) ---
+     cite measurement/auditing practice \cite{mehrabi2021,barocas2023}.
+ (2) Intervention: the planned mediation score
+     $S^{fair}_t(a) = U_t(a) - \lambda \max(0,\hat{\Delta}_t(a)-\epsilon) - \gamma C_t(a)$
+     attached at a decided seam, evaluated off-vs-on (your D2) --- frame as a
+     fairness--utility trade-off dial, cite \cite{hardt2016,barocas2023}.
+ (3) Process: datasheets/model-card-style documentation for experiment
+     artifacts and the contribution ledger separating inherited from new
+     work (your D5) \cite{gebru2021,mitchell2019}.
+ (4) Residual risk: impossibility means some disparity measure always
+     survives \cite{kleinberg2017,chouldechova2017}; mediation can cost
+     utility in some regimes --- that is why the frontier is measured,
+     not assumed.]
 
-\section{Mitigations}
-\label{sec:mitigations}
-% Rubric 4 (15 pts): concrete, literature-supported, residual risk honest.
-% Tie to D1--D2 of the planning presentation: schema + live mediator tests.
+%===============================================================================
+\section{Limitations}  % ~150--200 words | Rubric rows 1--2 honesty
+%===============================================================================
+[WRITE, in the ACL-limitations voice \cite{aclarr}:
+ (a) the analysis is prospective: live mediation and fairness-mediated
+     experiments are planned, so no fairness result is claimed yet;
+ (b) evidence comes from a simulator that does not yet model
+     hardware-anchored timing/resource contention;
+ (c) service classes are a design choice --- poorly chosen classes can
+     encode the wrong groups;
+ (d) two pages cannot treat security/privacy intersections (poisoning of
+     threat feedback, privacy of flow telemetry) except by pointer.]
 
-\textbf{AUTHOR WRITE.} Recommend a staged design, citing literature for each move:
-\begin{itemize}
-  \item \textbf{Specify groups and denominators first (D1).} Versioned service classes, demand normalization, zero-demand rules, and constructed-case metric tests. Without a denominator, ``gap'' is undefined \cite{suresh2021,barocas2023}.
-  \item \textbf{Enrich the trace.} Record demand, selected route/action, allocated qubits, fidelity, retries/starvation, and context quality alongside success/latency/reward.
-  \item \textbf{Audit before intervene.} Keep the existing EQUITAS audit mode (no allocation change) as the identity baseline; only then enable mitigation \cite{hardt2016}. This matches the already-written identity/threshold/determinism tests planned for D2.
-  \item \textbf{Live score, not unawareness.} Attach \texttt{QuantumEquitasMediator} at a documented policy-score or allocator seam with
-  \[
-    S^{\mathrm{fair}}_t(a)=U_t(a)-\lambda\max(0,\hat\Delta_t(a)-\varepsilon)-\gamma C_t(a),
-  \]
-  where $\hat\Delta$ is a disparity estimate and $C$ is a context-quality penalty. Cite \cite{hardt2016} for thresholded opportunity-style penalties; state that $\lambda,\gamma,\varepsilon$ are planned controls, not fitted results.
-  \item \textbf{Evaluate the frontier.} Report paired mediated vs.\ unmediated utility and disparity under threat $\times$ allocator $\times$ replay, with uncertainty. Do not claim a unique fair point \cite{kleinberg2017,chouldechova2017}.
-  \item \textbf{Documentation.} Model cards / datasheet-style fields for grouping rules and known limitations \cite{mitchell2019,gebru2021} --- one sentence only; do not drift into Option B/D.
-\end{itemize}
+%===============================================================================
+% References --- bibtex, ACM author-year. refs.bib ships with verified
+% entries from the course source archive.
+% Explicit project-root path keeps this working both when Blueprint2/main.tex
+% is selected directly in Overleaf and when the root main.tex wrapper inputs it.
+%===============================================================================
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{Blueprint2/refs}
 
-\section{Limitations}
-\label{sec:limitations}
-% Frame explicitly as ACL-style Limitations / NeurIPS-style Broader Impacts
-% (bonus). Honest residual risk.
-
-\textbf{AUTHOR WRITE.} Cover:
-\begin{itemize}
-  \item Live mediation is not attached; fairness runs have not started. Nothing here is an experimental finding.
-  \item Service-class meaning still requires advisor confirmation before the matrix is frozen.
-  \item Operational groups are not legally protected classes; transferring demographic fairness theorems requires care \cite{barocas2023}.
-  \item Satisfying one definition can violate another \cite{kleinberg2017}.
-  \item Simulator does not yet model hardware-anchored timing/contention; equity conclusions will not automatically transfer to deployed quantum hardware.
-  \item Residual risk: a mediator can reduce measured gaps while worsening worst-case class starvation if $\Delta$ is misspecified, or can tax efficiency under severe OnlineAdaptive threat. The planned sensitivity analysis is the control, not a guarantee.
-\end{itemize}
-
-\section*{Broader impacts (venue-style note)}
-\textbf{AUTHOR WRITE.} 3--5 sentences: if a fairness-unaware controller were scaled, underserved flows could be systematically deprioritized under scarcity and attack. The intended impact of the capstone is to make that failure measurable and contestable. Dual-use is limited because this is a simulation evaluation spine, not a production network controller. Accountabil
+\end{document}
