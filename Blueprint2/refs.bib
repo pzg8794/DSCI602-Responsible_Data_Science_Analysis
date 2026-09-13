@@ -1,156 +1,63 @@
-% refs.bib — verified entries for the DSCI602 Responsible Data Science Analysis.
-% Most correspond to sources archived in your course repo
-% (DSCI602-Responsible_Data_Science_Sources) and named in the assignment prompt.
-% Requirement: >=6 citations, >=4 peer-reviewed/archival. The skeleton's plan
-% cites 11 of these; every one is a peer-reviewed venue or archival report.
-%
-% joseph2016 / chen2020 / li2021 / cicconetti2023 / jain1984 were added after
-% comparing this scaffold against the ready-reference draft
-% (fairness_analysis.tex / fairness_references.bib): the reference draft grounds
-% its risk analysis in sequential/bandit-specific fairness work and quantum-
-% network resource-sharing precedent that this scaffold previously lacked.
-% Use them to strengthen Context (rubric row 1, specificity) and Risk Analysis
-% (rubric row 2, depth) --- see the updated [WRITE:] pointers below.
-
 @inproceedings{suresh2021,
-  author    = {Suresh, Harini and Guttag, John},
+  author    = {Harini Suresh and John Guttag},
   title     = {A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle},
-  booktitle = {Proceedings of the 1st ACM Conference on Equity and Access in Algorithms, Mechanisms, and Optimization (EAAMO)},
-  year      = {2021},
+  booktitle = {Proceedings of EAAMO},
+  year      = {2021}
 }
 
 @article{mehrabi2021,
-  author  = {Mehrabi, Ninareh and Morstatter, Fred and Saxena, Nripsuta and Lerman, Kristina and Galstyan, Aram},
+  author  = {Ninareh Mehrabi and Fred Morstatter and Nripsuta Saxena and Kristina Lerman and Aram Galstyan},
   title   = {A Survey on Bias and Fairness in Machine Learning},
   journal = {ACM Computing Surveys},
   volume  = {54},
   number  = {6},
-  year    = {2021},
+  year    = {2021}
 }
 
 @inproceedings{hardt2016,
-  author    = {Hardt, Moritz and Price, Eric and Srebro, Nathan},
+  author    = {Moritz Hardt and Eric Price and Nati Srebro},
   title     = {Equality of Opportunity in Supervised Learning},
-  booktitle = {Advances in Neural Information Processing Systems 29 (NeurIPS)},
-  year      = {2016},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2016}
 }
 
 @article{chouldechova2017,
-  author  = {Chouldechova, Alexandra},
+  author  = {Alexandra Chouldechova},
   title   = {Fair Prediction with Disparate Impact: A Study of Bias in Recidivism Prediction Instruments},
   journal = {Big Data},
   volume  = {5},
   number  = {2},
-  year    = {2017},
+  pages   = {153--163},
+  year    = {2017}
 }
 
 @inproceedings{kleinberg2017,
-  author    = {Kleinberg, Jon and Mullainathan, Sendhil and Raghavan, Manish},
+  author    = {Jon Kleinberg and Sendhil Mullainathan and Manish Raghavan},
   title     = {Inherent Trade-Offs in the Fair Determination of Risk Scores},
-  booktitle = {Proceedings of the 8th Innovations in Theoretical Computer Science Conference (ITCS)},
-  year      = {2017},
+  booktitle = {Proceedings of ITCS},
+  year      = {2017}
 }
 
 @book{barocas2023,
-  author    = {Barocas, Solon and Hardt, Moritz and Narayanan, Arvind},
+  author    = {Solon Barocas and Moritz Hardt and Arvind Narayanan},
   title     = {Fairness and Machine Learning: Limitations and Opportunities},
   publisher = {MIT Press},
-  year      = {2023},
+  year      = {2023}
 }
 
 @inproceedings{buolamwini2018,
-  author    = {Buolamwini, Joy and Gebru, Timnit},
+  author    = {Joy Buolamwini and Timnit Gebru},
   title     = {Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification},
-  booktitle = {Proceedings of Machine Learning Research (FAT* 2018)},
-  volume    = {81},
-  year      = {2018},
+  booktitle = {Proceedings of FAT*},
+  year      = {2018}
 }
 
 @article{obermeyer2019,
-  author  = {Obermeyer, Ziad and Powers, Brian and Vogeli, Christine and Mullainathan, Sendhil},
+  author  = {Ziad Obermeyer and Brian Powers and Christine Vogeli and Sendhil Mullainathan},
   title   = {Dissecting Racial Bias in an Algorithm Used to Manage the Health of Populations},
   journal = {Science},
   volume  = {366},
   number  = {6464},
   pages   = {447--453},
-  year    = {2019},
-}
-
-@inproceedings{mitchell2019,
-  author    = {Mitchell, Margaret and Wu, Simone and Zaldivar, Andrew and Barnes, Parker and Vasserman, Lucy and Hutchinson, Ben and Spitzer, Elena and Raji, Inioluwa Deborah and Gebru, Timnit},
-  title     = {Model Cards for Model Reporting},
-  booktitle = {Proceedings of the ACM Conference on Fairness, Accountability, and Transparency (FAT*)},
-  year      = {2019},
-}
-
-@article{gebru2021,
-  author  = {Gebru, Timnit and Morgenstern, Jamie and Vecchione, Briana and Vaughan, Jennifer Wortman and Wallach, Hanna and {Daum{\'e} III}, Hal and Crawford, Kate},
-  title   = {Datasheets for Datasets},
-  journal = {Communications of the ACM},
-  volume  = {64},
-  number  = {12},
-  year    = {2021},
-}
-
-@article{gibney2020,
-  author  = {Gibney, Elizabeth},
-  title   = {The Battle for Ethical {AI} at the World's Biggest Machine-Learning Conference},
-  journal = {Nature},
-  volume  = {578},
-  year    = {2020},
-}
-
-@misc{neuripschecklist,
-  author       = {{NeurIPS}},
-  title        = {Paper Checklist (Broader Impacts and Safeguards)},
-  howpublished = {Conference submission requirement},
-  year         = {2023},
-}
-
-@misc{aclarr,
-  author       = {{ACL Rolling Review}},
-  title        = {Ethics Policy and Mandatory Limitations Section},
-  howpublished = {ACL Rolling Review author guidelines},
-  year         = {2023},
-}
-
-@inproceedings{joseph2016,
-  author    = {Joseph, Matthew and Kearns, Michael and Morgenstern, Jamie and Roth, Aaron},
-  title     = {Fairness in Learning: Classic and Contextual Bandits},
-  booktitle = {Advances in Neural Information Processing Systems 29 (NeurIPS)},
-  year      = {2016},
-}
-
-@inproceedings{chen2020,
-  author    = {Chen, Yifang and Cuellar, Alex and Luo, Haipeng and Modi, Jignesh and Nemlekar, Heramb and Nikolaidis, Stefanos},
-  title     = {Fair Contextual Multi-Armed Bandits: Theory and Experiments},
-  booktitle = {Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI)},
-  series    = {Proceedings of Machine Learning Research},
-  volume    = {124},
-  year      = {2020},
-}
-
-@article{li2021,
-  author  = {Li, Changhao and Li, Tianyi and Liu, Yi-Xiang and Cappellaro, Paola},
-  title   = {Effective Routing Design for Remote Entanglement Generation on Quantum Networks},
-  journal = {npj Quantum Information},
-  volume  = {7},
-  number  = {1},
-  year    = {2021},
-}
-
-@article{cicconetti2023,
-  author  = {Cicconetti, Claudio and Conti, Marco and Passarella, Andrea},
-  title   = {Service Differentiation and Fair Sharing in Distributed Quantum Computing},
-  journal = {Pervasive and Mobile Computing},
-  volume  = {90},
-  year    = {2023},
-}
-
-@techreport{jain1984,
-  author      = {Jain, Rajendra K. and Chiu, Dah-Ming W. and Hawe, William R.},
-  title       = {A Quantitative Measure of Fairness and Discrimination for Resource Allocation in Shared Computer Systems},
-  institution = {Digital Equipment Corporation},
-  number      = {DEC-TR-301},
-  year        = {1984},
+  year    = {2019}
 }
