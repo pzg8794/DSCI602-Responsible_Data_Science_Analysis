@@ -1,0 +1,165 @@
+%===============================================================================
+% DSCI.602.01 — Responsible Data Science Analysis (Individual Assignment)
+% BLUEPRINT SKELETON — NOT SUBMITTABLE AS-IS
+%
+% How to use this file:
+%   1. Upload main.tex + refs.bib to a fresh Overleaf project (acmart is
+%      preinstalled on Overleaf; no extra files needed).
+%   2. Every [WRITE: ...] block tells you what to say, in your own words,
+%      with the target word budget and the citations to make. Replace each
+%      bracket with your own prose. Course policy: the writing must be yours.
+%   3. Compile and check that BODY text (everything before the references)
+%      fits 2 pages. Budget below totals ~1,400–1,600 words; sigconf
+%      two-column holds roughly that on two pages. Trim Risk Analysis first
+%      if you overflow.
+%   4. Before submitting: delete all [WRITE:] scaffolding comments, confirm
+%      the header block shows name / capstone title / focus area / subtitle,
+%      and verify the myCourses "FILE SUBMISSION SUCCESSFUL" screen.
+%
+% Evidence-state rules for THIS paper (from your signed-off capstone deck):
+%   - Fairness experiments and live mediation are PLANNED, not done.
+%     Write risks and mitigations prospectively ("will evaluate", "is
+%     designed to"), never as completed results.
+%   - The EQUITAS/post-run fairness infrastructure EXISTS; the clinical
+%     audit evidence belongs to a prior course project in a different
+%     domain — cite it as prior infrastructure/experience, not as a
+%     quantum-network result.
+%   - GA = graduate-assistant quantum-routing work (inherited baseline).
+%===============================================================================
+
+\documentclass[sigconf,nonacm,authorversion]{acmart}  % acmart v1.93+, as in your GA venue guide
+\settopmatter{printacmref=false}                     % no ACM reference block for a course paper
+\renewcommand\footnotetextcopyrightpermission[1]{}   % clean first page
+\pagestyle{plain}
+
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\citestyle{acmauthoryear}   % ACM author-year; switch to acmnumeric if you prefer numbered
+
+\begin{document}
+
+\title{Fairness-Aware Adaptive Routing for Quantum Networks}  % capstone title (required)
+\subtitle{Responsible Data Science Analysis --- Focus Area: Fairness\\[2pt]
+  {\normalsize [WRITE: your analysis subtitle here --- one line naming the specific angle, e.g., service-equity risks when entanglement routing is optimized for aggregate efficiency]}}
+
+\author{Piter Garcia}
+\affiliation{%
+  \institution{Rochester Institute of Technology}
+  \city{Rochester}
+  \state{NY}
+  \country{USA}}
+\email{pzg8794@rit.edu}
+
+\begin{abstract}
+% Optional in a 2-page paper; delete if you need the space.
+[WRITE (60--80 words, optional): one sentence on the capstone, one on the
+fairness concern, one on your mitigation stance, one on the venue-norm
+framing (limitations/broader-impact style).]
+\end{abstract}
+
+\maketitle
+
+%===============================================================================
+\section{Context}  % ~250--300 words | Rubric row 1 (specificity, 20 pts)
+%===============================================================================
+[WRITE: Situate the artifact precisely. Cover, in order:
+ (1) The system: a quantum-network controller that selects entanglement
+     routes and allocates limited qubits under stochastic-to-adaptive threat
+     regimes, evaluated by an inherited threat-aware bandit spine (the
+     graduate-assistant quantum-routing work), now extended with
+     fairness-aware mediation (your DSCI602 capstone).
+ (2) The decision the system influences: which flows get successful, timely
+     service when routes, qubits, and reliable context are scarce.
+ (3) The ``groups'': flows / service classes differentiated by demand,
+     priority, and context quality --- these are your equity units.
+ (4) Stakeholders: tenants/applications sharing the network whose service
+     depends on the controller's allocation choices.
+ (5) Why fairness is at stake: the evaluation objective is aggregate
+     Oracle-normalized efficiency, and inherited evidence already shows
+     non-obvious interactions (a validated replay slice where efficiency
+     falls then recovers across capacity scales) --- proof that aggregate
+     metrics can hide regime-dependent behavior.
+ Cite the venue-norm framing once here: NeurIPS checklist / ACL limitations
+ practice \cite{gibney2020,neuripschecklist,aclarr}.]
+
+%===============================================================================
+\section{Risk Analysis}  % ~500--600 words | Rubric row 2 (depth, 25 pts)
+%===============================================================================
+% Guiding question from the assignment: across which groups might outcomes
+% differ, which fairness definition fits, and what does it cost to satisfy it?
+
+\subsection{Where disparity enters the pipeline}
+[WRITE: Map Suresh \& Guttag's sources-of-harm lifecycle \cite{suresh2021}
+and the Mehrabi survey's bias taxonomy \cite{mehrabi2021} onto YOUR pipeline
+concretely: measurement (which flow outcomes get recorded --- success,
+latency, reward today; demand, allocated qubits, retries/starvation only
+planned), evaluation (aggregate efficiency as the headline metric),
+and deployment (threat regimes that shift the operating point). Name the
+specific stage, not just the category.]
+
+\subsection{Which fairness definition fits --- and why none is free}
+[WRITE: Present demographic-parity-style per-class service gaps versus
+error-rate parity in your setting \cite{hardt2016,barocas2023}; then use the
+impossibility results \cite{chouldechova2017,kleinberg2017} to justify your
+capstone's actual design stance: measure a utility--disparity frontier across
+a $\lambda,\gamma,\epsilon$ mediation sweep rather than assert one metric.
+This is your deepest technical move --- the frontier exists precisely because
+the definitions cannot all hold at once.]
+
+\subsection{Concrete failure modes and who bears them}
+[WRITE: 2--3 named failure modes, each with the affected group:
+ (a) aggregate gains concentrating in high-demand classes while low-demand
+     or poor-context flows absorb retries/starvation under escalating
+     (structured/adaptive) threats;
+ (b) ``fairness through unawareness'' --- the current post-run records lack
+     the fields needed to even see disparity (cite the caution via
+     \cite{barocas2023});
+ (c) deployment drift --- a policy tuned in one threat regime transferring
+     poorly, echoing how audited real-world systems failed groups the
+     aggregate metric hid \cite{buolamwini2018,obermeyer2019}.
+ Keep the quantum claims prospective; the two cited harms papers are your
+ evidence that aggregate-optimized systems conceal group harm in general.]
+
+%===============================================================================
+\section{Mitigations}  % ~350--450 words | Rubric row 4 (15 pts)
+%===============================================================================
+[WRITE: Present mitigations as measurement-first, then intervention, then
+process --- each tied to your actual architecture:
+ (1) Measurement: per-class success/latency/resource-access/retry/starvation
+     gaps computed from enriched outcome records (your D1 schema work) ---
+     cite measurement/auditing practice \cite{mehrabi2021,barocas2023}.
+ (2) Intervention: the planned mediation score
+     $S^{fair}_t(a) = U_t(a) - \lambda \max(0,\hat{\Delta}_t(a)-\epsilon) - \gamma C_t(a)$
+     attached at a decided seam, evaluated off-vs-on (your D2) --- frame as a
+     fairness--utility trade-off dial, cite \cite{hardt2016,barocas2023}.
+ (3) Process: datasheets/model-card-style documentation for experiment
+     artifacts and the contribution ledger separating inherited from new
+     work (your D5) \cite{gebru2021,mitchell2019}.
+ (4) Residual risk: impossibility means some disparity measure always
+     survives \cite{kleinberg2017,chouldechova2017}; mediation can cost
+     utility in some regimes --- that is why the frontier is measured,
+     not assumed.]
+
+%===============================================================================
+\section{Limitations}  % ~150--200 words | Rubric rows 1--2 honesty
+%===============================================================================
+[WRITE, in the ACL-limitations voice \cite{aclarr}:
+ (a) the analysis is prospective: live mediation and fairness-mediated
+     experiments are planned, so no fairness result is claimed yet;
+ (b) evidence comes from a simulator that does not yet model
+     hardware-anchored timing/resource contention;
+ (c) service classes are a design choice --- poorly chosen classes can
+     encode the wrong groups;
+ (d) two pages cannot treat security/privacy intersections (poisoning of
+     threat feedback, privacy of flow telemetry) except by pointer.]
+
+%===============================================================================
+% References --- bibtex, ACM author-year. refs.bib ships with 12 verified
+% entries from the course source archive; you need >=6 total, >=4 archival.
+% Current plan cites 11; all 11 are peer-reviewed or archival.
+%===============================================================================
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{refs}
+
+\end{document}
