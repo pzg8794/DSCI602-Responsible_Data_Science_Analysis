@@ -44,11 +44,19 @@ Aggregate-optimized quantum routing can hide per-class service disparities that 
 - **gebru2021** — datasheets: dataset/artifact documentation discipline.
 - **gibney2020 / neuripschecklist / aclarr** — venue norms; why this analysis exists at all.
 
+### Added after comparing against the ready-reference draft (gap-closing sources)
+
+- **joseph2016** — fairness constraints change the regret cost of learning under uncertainty; the sequential-bandit-specific counterpart to the general lifecycle/taxonomy papers above. Use in Risk Analysis §1.
+- **chen2020** — fair contextual multi-armed bandits with minimum service rates; supports both the feedback-loop risk (Risk Analysis §1) and the separable/auditable mediator design (Mitigations).
+- **li2021** — quantum-network routing already schedules scarce capacity across simultaneous requests; a fair-sharing precedent native to the domain. Use in Context for specificity.
+- **cicconetti2023** — service differentiation and fair sharing framed explicitly as a quantum-resource problem. Pairs with li2021 in Context.
+- **jain1984** — a citable, formal disparity/fairness index (or demand-normalized access) to anchor the frontier claim in Risk Analysis §2 with a concrete metric instead of prose alone.
+
 ## Pre-submission checklist
 
 - [ ] Body ≤ 2 pages excluding references (compile and count)
 - [ ] Header shows name, capstone title, "Focus Area: Fairness", and your subtitle
-- [ ] ≥6 citations, ≥4 peer-reviewed/archival (the planned 11 all qualify), bibtex, one consistent style
+- [ ] ≥6 citations, ≥4 peer-reviewed/archival (16 available in refs.bib after the gap-closing additions), bibtex, one consistent style
 - [ ] Section headings present; conference-template bonus framing (limitations/broader-impacts voice)
 - [ ] No completed-fairness-results claims; clinical work framed as prior infrastructure only
 - [ ] PDF export → myCourses upload → click Submit → capture the success screen as your receipt

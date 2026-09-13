@@ -1,8 +1,16 @@
 % refs.bib — verified entries for the DSCI602 Responsible Data Science Analysis.
-% All twelve correspond to sources archived in your course repo
+% Most correspond to sources archived in your course repo
 % (DSCI602-Responsible_Data_Science_Sources) and named in the assignment prompt.
 % Requirement: >=6 citations, >=4 peer-reviewed/archival. The skeleton's plan
 % cites 11 of these; every one is a peer-reviewed venue or archival report.
+%
+% joseph2016 / chen2020 / li2021 / cicconetti2023 / jain1984 were added after
+% comparing this scaffold against the ready-reference draft
+% (fairness_analysis.tex / fairness_references.bib): the reference draft grounds
+% its risk analysis in sequential/bandit-specific fairness work and quantum-
+% network resource-sharing precedent that this scaffold previously lacked.
+% Use them to strengthen Context (rubric row 1, specificity) and Risk Analysis
+% (rubric row 2, depth) --- see the updated [WRITE:] pointers below.
 
 @inproceedings{suresh2021,
   author    = {Suresh, Harini and Guttag, John},
@@ -104,4 +112,45 @@
   title        = {Ethics Policy and Mandatory Limitations Section},
   howpublished = {ACL Rolling Review author guidelines},
   year         = {2023},
+}
+
+@inproceedings{joseph2016,
+  author    = {Joseph, Matthew and Kearns, Michael and Morgenstern, Jamie and Roth, Aaron},
+  title     = {Fairness in Learning: Classic and Contextual Bandits},
+  booktitle = {Advances in Neural Information Processing Systems 29 (NeurIPS)},
+  year      = {2016},
+}
+
+@inproceedings{chen2020,
+  author    = {Chen, Yifang and Cuellar, Alex and Luo, Haipeng and Modi, Jignesh and Nemlekar, Heramb and Nikolaidis, Stefanos},
+  title     = {Fair Contextual Multi-Armed Bandits: Theory and Experiments},
+  booktitle = {Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {124},
+  year      = {2020},
+}
+
+@article{li2021,
+  author  = {Li, Changhao and Li, Tianyi and Liu, Yi-Xiang and Cappellaro, Paola},
+  title   = {Effective Routing Design for Remote Entanglement Generation on Quantum Networks},
+  journal = {npj Quantum Information},
+  volume  = {7},
+  number  = {1},
+  year    = {2021},
+}
+
+@article{cicconetti2023,
+  author  = {Cicconetti, Claudio and Conti, Marco and Passarella, Andrea},
+  title   = {Service Differentiation and Fair Sharing in Distributed Quantum Computing},
+  journal = {Pervasive and Mobile Computing},
+  volume  = {90},
+  year    = {2023},
+}
+
+@techreport{jain1984,
+  author      = {Jain, Rajendra K. and Chiu, Dah-Ming W. and Hawe, William R.},
+  title       = {A Quantitative Measure of Fairness and Discrimination for Resource Allocation in Shared Computer Systems},
+  institution = {Digital Equipment Corporation},
+  number      = {DEC-TR-301},
+  year        = {1984},
 }

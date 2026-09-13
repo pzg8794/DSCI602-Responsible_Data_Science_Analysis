@@ -25,6 +25,15 @@
 %     domain — cite it as prior infrastructure/experience, not as a
 %     quantum-network result.
 %   - GA = graduate-assistant quantum-routing work (inherited baseline).
+%
+% Gap check (added after comparing against the ready-reference draft,
+% fairness_analysis.tex): that draft grounds its Context and Risk Analysis in
+% sequential/bandit-specific fairness work (\cite{joseph2016,chen2020}) and
+% quantum-network resource-sharing precedent (\cite{li2021,cicconetti2023}),
+% plus a formal disparity metric (\cite{jain1984}). This scaffold previously
+% cited only general ML-fairness literature, which is a specificity risk for
+% a bandit-based capstone (rubric row 1, 20 pts). The five citations below
+% are now available in refs.bib — use them where marked.
 %===============================================================================
 
 \documentclass[sigconf,nonacm,authorversion]{acmart}  % acmart v1.93+, as in your GA venue guide
@@ -40,8 +49,8 @@
 \begin{document}
 
 \title{Fairness-Aware Adaptive Routing for Quantum Networks}  % capstone title (required)
-\subtitle{Responsible Data Science Analysis --- Focus Area: Fairness\\[2pt]
-  {\normalsize [WRITE: your analysis subtitle here --- one line naming the specific angle, e.g., service-equity risks when entanglement routing is optimized for aggregate efficiency]}}
+\subtitle{Responsible Data Science Analysis --- Focus Area: Fairness ---
+    [WRITE: your analysis subtitle here --- one line naming the specific angle, e.g., service-equity risks when entanglement routing is optimized for aggregate efficiency]}
 
 \author{Piter Garcia}
 \affiliation{%
@@ -80,6 +89,12 @@ framing (limitations/broader-impact style).]
      non-obvious interactions (a validated replay slice where efficiency
      falls then recovers across capacity scales) --- proof that aggregate
      metrics can hide regime-dependent behavior.
+ (6) OPTIONAL specificity boost: quantum networks already require
+     scheduling scarce capacity across simultaneous requests, and prior
+     work frames this as a fair-sharing problem \cite{li2021,cicconetti2023}
+     --- one sentence citing this precedent shows the fairness concern is
+     native to quantum-network resource allocation, not imported from
+     classical ML.
  Cite the venue-norm framing once here: NeurIPS checklist / ACL limitations
  practice \cite{gibney2020,neuripschecklist,aclarr}.]
 
@@ -96,7 +111,13 @@ concretely: measurement (which flow outcomes get recorded --- success,
 latency, reward today; demand, allocated qubits, retries/starvation only
 planned), evaluation (aggregate efficiency as the headline metric),
 and deployment (threat regimes that shift the operating point). Name the
-specific stage, not just the category.]
+specific stage, not just the category.
+Gap to close: a bandit controller also has a sequential feedback risk that
+the lifecycle/taxonomy papers alone do not cover --- underexplored routes or
+cohorts generate less reward evidence, which can further lower their future
+selection. Cite \cite{joseph2016} (fairness changes the regret cost of
+learning under uncertainty) and \cite{chen2020} (contextual allocation with
+minimum service rates) to name this feedback-loop mechanism explicitly.]
 
 \subsection{Which fairness definition fits --- and why none is free}
 [WRITE: Present demographic-parity-style per-class service gaps versus
@@ -105,7 +126,13 @@ impossibility results \cite{chouldechova2017,kleinberg2017} to justify your
 capstone's actual design stance: measure a utility--disparity frontier across
 a $\lambda,\gamma,\epsilon$ mediation sweep rather than assert one metric.
 This is your deepest technical move --- the frontier exists precisely because
-the definitions cannot all hold at once.]
+the definitions cannot all hold at once.
+OPTIONAL formal anchor: state a concrete disparity/access metric instead of
+leaving the gap abstract, e.g. demand-normalized access
+$A_g(T)=\sum_t Q_{g,t}/\sum_t D_{g,t}$ and its max-gap $\Delta_A$, or Jain's
+fairness index over group-normalized access \cite{jain1984}. A named formula
+is a concrete, citable specificity gain over describing the frontier only in
+words.]
 
 \subsection{Concrete failure modes and who bears them}
 [WRITE: 2--3 named failure modes, each with the affected group:
@@ -133,6 +160,8 @@ process --- each tied to your actual architecture:
      $S^{fair}_t(a) = U_t(a) - \lambda \max(0,\hat{\Delta}_t(a)-\epsilon) - \gamma C_t(a)$
      attached at a decided seam, evaluated off-vs-on (your D2) --- frame as a
      fairness--utility trade-off dial, cite \cite{hardt2016,barocas2023}.
+     Note the mediator keeps the base policy separable and auditable rather
+     than replacing it, matching the design pattern in \cite{chen2020}.
  (3) Process: datasheets/model-card-style documentation for experiment
      artifacts and the contribution ledger separating inherited from new
      work (your D5) \cite{gebru2021,mitchell2019}.
@@ -161,6 +190,8 @@ process --- each tied to your actual architecture:
 % is selected directly in Overleaf and when the root main.tex wrapper inputs it.
 %===============================================================================
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{Blueprint2/refs}
+\IfFileExists{Blueprint2/refs.bib}
+    {\bibliography{Blueprint2/refs}}
+    {\bibliography{refs}}
 
 \end{document}
