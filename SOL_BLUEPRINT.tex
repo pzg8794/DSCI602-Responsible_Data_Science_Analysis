@@ -1,1 +1,39 @@
-\input{Blueprint/main.tex}
+% REFERENCE BLUEPRINT ONLY. Independent comparison draft.
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\title{Fairness and Service Equity in Adaptive Quantum-Network Routing:\\Service Equity Under Scarce Qubit Allocation and Unequal Context Quality}
+\author{\IEEEauthorblockN{Piter Z. Garcia Bautista}\IEEEauthorblockA{DSCI 602 -- Applied Data Science II\\Capstone: Fairness-Aware Adaptive Routing for Quantum Networks\\Focus Area: Fairness}}
+\begin{document}
+\maketitle
+\begin{abstract}
+This independent reference analysis examines fairness risks in adaptive quantum-network routing and qubit allocation under scarce resources, partial feedback, and changing threat conditions. Aggregate routing efficiency can remain strong while particular service classes experience lower entanglement success, greater latency, more retries, or reduced resource access. The analysis frames fairness as quantum service equity and proposes measurable outcome gaps, auditable traces, bounded fairness-aware mediation, and matched utility--equity evaluation.
+\end{abstract}
+\section{Context and Fairness Framing}
+The capstone studies a controller that selects entanglement routes and allocates limited quantum resources under stochastic link behavior, partial feedback, and progressively stronger threats. Quantum networking makes these decisions consequential because entanglement distribution depends on probabilistic link success, limited resources, and routing choices across competing requests~\cite{wehner2018quantum,pant2019routing}. The fairness concern is allocative: a controller can achieve strong network-wide efficiency while some flows receive systematically worse service. The relevant groups are prespecified operational service classes or context-quality cohorts rather than demographic groups that the simulator does not contain.
+\section{Risk Analysis}
+Suresh and Guttag identify representation, measurement, aggregation, evaluation, and deployment harms across the ML life cycle~\cite{suresh2021harm}; Mehrabi et al. likewise emphasize that bias arises from interacting data, model, and evaluation choices~\cite{mehrabi2021survey}. In this project, representation risk appears when stress tests omit difficult topologies or low-context cohorts; measurement risk appears when demand, retries, starvation, or allocated resources are incompletely recorded; aggregation risk appears when one reward treats incompatible service needs as interchangeable; and evaluation risk appears when aggregate efficiency is reported without service-class outcomes.
+
+Sequential feedback can compound disadvantage. A route or class selected less often produces less evidence, potentially preserving uncertainty and lowering future selection. Fair-bandit research shows that fairness constraints change exploration and regret rather than acting as cost-free post-processing~\cite{joseph2016fairness,chen2020faircmab}. Classical criteria are useful warnings but cannot be copied mechanically: equality-of-opportunity-style criteria address prediction errors~\cite{hardt2016equality}, while Chouldechova and Kleinberg et al. show that desirable fairness criteria can conflict~\cite{chouldechova2017fair,kleinberg2017tradeoffs}. Equal raw qubit allocation can therefore conflict with equal success when demand and physical path quality differ.
+\section{Fairness Criteria and Mitigation}
+For group $g$ over horizon $T$, define demand-normalized access
+\begin{equation}
+A_g(T)=\frac{\sum_{t=1}^{T}Q_{g,t}}{\sum_{t=1}^{T}D_{g,t}},\qquad
+\Delta_A(T)=\max_{g,h}|A_g(T)-A_h(T)|.
+\end{equation}
+The audit should also report success-rate and latency gaps, worst-class outcomes, retry burden, starvation frequency, and fidelity failures where supported. The first mitigation is observability: retain service class, demand, context quality, candidate and selected routes, policy scores, allocated resources, fidelity, success, latency, retries, and starvation age.
+
+The second mitigation is a bounded mediator,
+\begin{equation}
+S_t^{\mathrm{fair}}(a)=U_t(a)-\lambda[\widehat{\Delta}_t(a)-\epsilon]_+-\gamma C_t(a),
+\end{equation}
+where $U_t(a)$ is base utility, $\widehat{\Delta}_t(a)$ estimates disparity, $\epsilon$ is tolerated slack, and $C_t(a)$ penalizes missing or unreliable context. Validation should compare mediated and unmediated policies under matched seeds, policies, allocators, capacities, topologies, and threat regimes, reporting utility, regret, success, fidelity, stability, robustness, and equity together as a utility--equity frontier.
+\section{Broader Impacts}
+The intended broader impact is not to claim that a simulated quantum network is socially fair, but to prevent aggregate performance from becoming the only design objective when scarce quantum service is distributed across competing flows. A service-equity layer can make unequal outcomes visible and make the cost of intervention auditable.
+\section{Limitations}
+This analysis is prospective and does not claim completed live mediation or completed DSCI 602 fairness experiments. Service classes are engineering choices, demand normalization embeds assumptions, rare classes can yield unstable estimates, and fairness criteria can conflict. Simulation evidence also remains limited by modeled workloads, topology, and threat behavior. The responsible conclusion is to report uncertainty, residual trade-offs, and the boundary between inherited routing evidence and new fairness results.
+\bibliographystyle{IEEEtran}
+\bibliography{Blueprint/references}
+\end{document}
