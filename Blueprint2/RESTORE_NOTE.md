@@ -1,1 +1,0 @@
-Restoration marker: Blueprint2 LaTeX sources were accidentally overwritten by an Overleaf sync and are being restored to the last known good version.

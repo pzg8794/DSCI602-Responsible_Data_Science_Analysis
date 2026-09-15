@@ -1,1 +1,0 @@
-Blueprint2 repair in progress.
